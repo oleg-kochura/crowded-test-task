@@ -1,11 +1,11 @@
 import { Button, Card, Chip } from '@heroui/react';
 import { Star } from 'lucide-react';
-import { useFavourites } from 'shared/favourites';
+import { useFavouritesStore, useIsFavourite } from 'shared/favourites';
 import type { ArtistEvent } from 'shared/favourites';
+import { useArtistSearchStore } from 'features/search/store/useArtistSearchStore';
 
 type Props = {
   event: ArtistEvent;
-  artistName: string;
 };
 
 const formatDate = (iso: string) =>
@@ -24,18 +24,18 @@ const offerVariant = (status: string): 'primary' | 'secondary' | 'soft' => {
   return 'soft';
 };
 
-export const EventDetails = ({ event, artistName }: Props) => {
-  const { isFavourite, toggle } = useFavourites();
-  const favourite = isFavourite(event.id);
+export const EventDetails = ({ event }: Props) => {
+  const artistName = useArtistSearchStore((s) => s.artistName);
+  const toggle = useFavouritesStore((s) => s.toggle);
+  const favourite = useIsFavourite(event.id);
 
   return (
     <div className="flex flex-col gap-4">
-      {/* Event info */}
       <Card>
         <Card.Header>
           <div className="flex justify-between items-start gap-2 w-full">
             <div>
-              <p className="text-xs text-default-400 uppercase tracking-wide mb-1">
+              <p className="text-xs text-muted uppercase tracking-wide mb-1">
                 Event information
               </p>
               <p className="text-sm font-semibold">{formatDate(event.datetime)}</p>
@@ -54,7 +54,7 @@ export const EventDetails = ({ event, artistName }: Props) => {
         <Card.Content className="flex flex-col gap-2">
           {event.description && <p className="text-sm">{event.description}</p>}
           {event.on_sale_datetime && (
-            <p className="text-sm text-default-500">
+            <p className="text-sm text-muted">
               On sale:{' '}
               <span className="text-foreground">
                 {new Date(event.on_sale_datetime).toLocaleDateString('en-US')}
@@ -63,7 +63,7 @@ export const EventDetails = ({ event, artistName }: Props) => {
           )}
           {event.lineup.length > 0 && (
             <div>
-              <p className="text-sm text-default-500 mb-1">Lineup:</p>
+              <p className="text-sm text-muted mb-1">Lineup:</p>
               <div className="flex flex-wrap gap-1">
                 {event.lineup.map((name) => (
                   <Chip key={name} variant="soft">
@@ -76,24 +76,21 @@ export const EventDetails = ({ event, artistName }: Props) => {
         </Card.Content>
       </Card>
 
-      {/* Venue */}
       <Card>
         <Card.Header>
-          <p className="text-xs text-default-400 uppercase tracking-wide">Venue information</p>
+          <p className="text-xs text-muted uppercase tracking-wide">Venue information</p>
         </Card.Header>
         <Card.Content className="flex flex-col gap-1">
           <p className="font-medium">{event.venue.name}</p>
-          <p className="text-sm text-default-500">
-            {[event.venue.city, event.venue.region, event.venue.country]
-              .filter(Boolean)
-              .join(', ')}
+          <p className="text-sm text-muted">
+            {[event.venue.city, event.venue.region, event.venue.country].filter(Boolean).join(', ')}
           </p>
           {event.venue.latitude && event.venue.longitude && (
             <a
               href={`https://maps.google.com/?q=${event.venue.latitude},${event.venue.longitude}`}
               target="_blank"
               rel="noreferrer"
-              className="text-sm text-primary hover:underline mt-1 inline-block"
+              className="text-sm text-accent hover:underline mt-1 inline-block"
             >
               View on map ↗
             </a>
@@ -101,11 +98,10 @@ export const EventDetails = ({ event, artistName }: Props) => {
         </Card.Content>
       </Card>
 
-      {/* Offers */}
       {event.offers.length > 0 && (
         <Card>
           <Card.Header>
-            <p className="text-xs text-default-400 uppercase tracking-wide">Special offers</p>
+            <p className="text-xs text-muted uppercase tracking-wide">Special offers</p>
           </Card.Header>
           <Card.Content className="flex flex-col gap-3">
             {event.offers.map((offer, i) => (
@@ -120,7 +116,7 @@ export const EventDetails = ({ event, artistName }: Props) => {
                   href={offer.url}
                   target="_blank"
                   rel="noreferrer"
-                  className="text-sm text-primary hover:underline"
+                  className="text-sm text-accent hover:underline"
                 >
                   Get tickets ↗
                 </a>

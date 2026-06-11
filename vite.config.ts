@@ -19,6 +19,7 @@ export default defineConfig({
       src: resolve(__dirname, 'src'),
       lib: resolve(__dirname, 'src/lib'),
       shared: resolve(__dirname, 'src/shared'),
+      features: resolve(__dirname, 'src/features'),
     },
   },
 });

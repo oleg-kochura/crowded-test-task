@@ -1,3 +1,2 @@
-export { FavouritesProvider } from './FavouritesProvider';
-export { useFavourites } from './useFavourites';
+export { useFavouritesStore, useIsFavourite } from './favouritesStore';
 export type { FavouriteItem, ArtistEvent } from './favourites.types';

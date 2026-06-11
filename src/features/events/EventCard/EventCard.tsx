@@ -18,7 +18,7 @@ const formatDate = (iso: string) =>
 
 export const EventCard = ({ event, isSelected, onClick }: Props) => {
   return (
-    <Card className={`w-full transition-colors ${isSelected ? 'ring-2 ring-primary' : ''}`}>
+    <Card className={`w-full transition-colors ${isSelected ? 'ring-2 ring-accent' : ''}`}>
       <Card.Content className="p-0">
         <button
           type="button"
@@ -26,7 +26,7 @@ export const EventCard = ({ event, isSelected, onClick }: Props) => {
           onClick={onClick}
         >
           <p className="font-medium text-sm">{formatDate(event.datetime)}</p>
-          <div className="flex items-center gap-1 text-default-500 text-sm mt-0.5">
+          <div className="flex items-center gap-1 text-muted text-sm mt-0.5">
             <MapPin size={13} />
             <span className="truncate">
               {event.venue.name}, {event.venue.city}
@@ -34,7 +34,7 @@ export const EventCard = ({ event, isSelected, onClick }: Props) => {
             </span>
           </div>
           {event.lineup.length > 0 && (
-            <p className="text-xs text-default-400 truncate mt-0.5">{event.lineup.join(', ')}</p>
+            <p className="text-xs text-muted truncate mt-0.5">{event.lineup.join(', ')}</p>
           )}
         </button>
       </Card.Content>

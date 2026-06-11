@@ -1,24 +1,17 @@
 import { SearchField } from '@heroui/react';
 import { debounce } from 'lib/utils';
+import { useArtistSearchStore } from './store/useArtistSearchStore';
 
-interface Props {
-  onSearch: (artistName: string) => void;
-  isLoading?: boolean;
-}
+export const SearchBar = () => {
+  const search = useArtistSearchStore((s) => s.search);
 
-export const SearchBar: React.FC<Props> = ({ onSearch, isLoading }) => {
-  const handleSearchDebounced = debounce((val: string) => onSearch(val.trim()), 500);
+  const handleSearchDebounced = debounce((val: string) => search(val.trim()), 500);
 
   return (
-    <SearchField
-      onChange={handleSearchDebounced}
-      isDisabled={isLoading}
-      aria-label="Search for an artist"
-      fullWidth
-    >
-      <SearchField.Group>
+    <SearchField onChange={handleSearchDebounced} aria-label="Search for an artist" fullWidth>
+      <SearchField.Group className="h-12">
         <SearchField.SearchIcon />
-        <SearchField.Input placeholder="Search for an artist..." />
+        <SearchField.Input placeholder="Search for an artist..." className="text-base" />
         <SearchField.ClearButton />
       </SearchField.Group>
     </SearchField>

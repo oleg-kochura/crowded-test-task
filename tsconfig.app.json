@@ -23,7 +23,8 @@
     "paths": {
       "src/*": ["./src/*"],
       "lib/*": ["./src/lib/*"],
-      "shared/*": ["./src/shared/*"]
+      "shared/*": ["./src/shared/*"],
+      "features/*": ["./src/features/*"]
     }
   },
   "include": ["src"]

@@ -1,0 +1,1 @@
+export { FavouritesPanel } from './FavouritesPanel';

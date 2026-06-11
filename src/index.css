@@ -1,8 +1,7 @@
-@import "tailwindcss";
-@import "@heroui/styles";
+@import 'tailwindcss';
+@import '@heroui/styles';
 
 :root {
-  /* Single font family used across the whole app */
   --font-sans: 'Inter', system-ui, -apple-system, 'Segoe UI', Roboto, sans-serif;
 
   font-family: var(--font-sans);
@@ -12,7 +11,7 @@
   text-rendering: optimizeLegibility;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  color-scheme: light dark;
+  color-scheme: light;
 }
 
 * {
@@ -30,7 +29,6 @@ body {
   flex-direction: column;
 }
 
-/* Reset default heading sizing/margins so the type scale is driven by utilities */
 h1,
 h2,
 h3 {

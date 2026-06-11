@@ -31,10 +31,10 @@ export const FavouriteCard = ({ item, onRemove }: Props) => {
         </Button>
         <div className="flex flex-col min-w-0 flex-1">
           <p className="text-sm font-medium truncate">{artistName}</p>
-          <p className="text-xs text-default-500 truncate">
+          <p className="text-xs text-muted truncate">
             {event.venue.name}, {event.venue.city}
           </p>
-          <p className="text-xs text-default-400">{formatDate(event.datetime)}</p>
+          <p className="text-xs text-muted">{formatDate(event.datetime)}</p>
         </div>
       </Card.Content>
     </Card>
