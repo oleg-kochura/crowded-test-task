@@ -11,7 +11,6 @@ import { useFetchArtistQuery, useFetchArtistEventsQuery } from 'shared/api/artis
 
 export const ArtistPanel = () => {
   const artistName = useArtistSearchStore((s) => s.artistName);
-
   const { artist, isLoading, error } = useFetchArtistQuery(artistName);
   const { events, isLoading: eventsLoading } = useFetchArtistEventsQuery(artistName);
 
