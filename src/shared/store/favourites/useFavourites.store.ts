@@ -1,6 +1,6 @@
 import { create } from 'zustand';
 import { persist, createJSONStorage } from 'zustand/middleware';
-import type { FavouriteItem } from './favourites.types';
+import type { FavouriteItem } from './favourites.type';
 
 type FavouritesState = {
   items: FavouriteItem[];

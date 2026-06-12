@@ -1,8 +1,8 @@
 import { Avatar, Card } from '@heroui/react';
-import type { FetchArtistResponse } from 'shared/api/artists';
+import type { Artist } from 'shared/api/artists';
 
 type Props = {
-  artist: FetchArtistResponse;
+  artist: Artist;
 };
 
 export const ArtistCard = ({ artist }: Props) => {

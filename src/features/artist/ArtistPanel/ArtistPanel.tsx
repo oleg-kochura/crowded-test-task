@@ -7,7 +7,7 @@ import { EmptyStateHint } from 'shared/ui/EmptyStateHint';
 import { NotFoundEmptyState } from 'shared/ui/NotFoundEmptyState';
 import { useArtistSearchStore } from 'shared/store/artistSearch';
 
-import { useFetchArtistQuery, useFetchArtistEventsQuery } from 'shared/api/artists/queries';
+import { useFetchArtistQuery, useFetchArtistEventsQuery } from 'shared/api/artists';
 
 export const ArtistPanel = () => {
   const artistName = useArtistSearchStore((s) => s.artistName);

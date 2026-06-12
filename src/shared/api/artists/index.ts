@@ -1,2 +1,3 @@
+export * from './model';
 export * from './requests';
-export type { ArtistEvent } from './artists.types';
+export * from './queries';
