@@ -1,5 +1,5 @@
 import { Button, Card, Chip } from '@heroui/react';
-import { Star } from 'lucide-react';
+import { ExternalLink, Star } from 'lucide-react';
 import { useFavouritesStore, useIsFavourite } from 'shared/store/favourites';
 import type { ArtistEvent } from 'shared/api/artists';
 import { useArtistSearchStore } from 'shared/store/artistSearch';
@@ -72,6 +72,17 @@ export const EventDetails = ({ event }: Props) => {
                 ))}
               </div>
             </div>
+          )}
+          {event.url && (
+            <a
+              href={event.url}
+              target="_blank"
+              rel="noreferrer"
+              className="inline-flex items-center gap-1 text-sm text-accent hover:underline mt-1"
+            >
+              <ExternalLink size={14} aria-hidden="true" />
+              Event page
+            </a>
           )}
         </Card.Content>
       </Card>

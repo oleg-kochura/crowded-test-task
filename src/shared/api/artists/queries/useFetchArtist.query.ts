@@ -16,6 +16,6 @@ export const useFetchArtistQuery = (
   return {
     artist: data,
     error,
-    isLoading,
+    isArtistLoading: isLoading,
   };
 };

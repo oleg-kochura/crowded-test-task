@@ -16,6 +16,6 @@ export const useFetchArtistEventsQuery = (
   return {
     events: data,
     error,
-    isLoading,
+    isEventsLoading: isLoading,
   };
 };

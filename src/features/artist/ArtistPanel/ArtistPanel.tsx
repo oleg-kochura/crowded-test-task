@@ -11,34 +11,36 @@ import { useFetchArtistQuery, useFetchArtistEventsQuery } from 'shared/api/artis
 
 export const ArtistPanel = () => {
   const artistName = useArtistSearchStore((s) => s.artistName);
-  const { artist, isLoading, error } = useFetchArtistQuery(artistName);
-  const { events, isLoading: eventsLoading } = useFetchArtistEventsQuery(artistName);
+  const { artist, isArtistLoading, error } = useFetchArtistQuery(artistName);
+  const { events, isEventsLoading } = useFetchArtistEventsQuery(artistName);
+
+  if (!artistName && !isArtistLoading) {
+    return (
+      <EmptyStateHint
+        icon={<Mic2 size={28} />}
+        title="Ready to Discover?"
+        description="Search for your favourite artist to see their upcoming world tour dates and local concerts."
+      />
+    );
+  }
+
+  if (isArtistLoading) {
+    return <ArtistCardSkeleton />;
+  }
+
+  if (error) {
+    return (
+      <NotFoundEmptyState
+        title="Artist not found"
+        description="We couldn't find an artist with that name. Try checking the spelling."
+      />
+    );
+  }
 
   return (
     <>
-      {isLoading && <ArtistCardSkeleton />}
-
-      {error && (
-        <NotFoundEmptyState
-          title="Artist not found"
-          description="We couldn't find an artist with that name. Try checking the spelling."
-        />
-      )}
-
-      {!artistName && !isLoading && (
-        <EmptyStateHint
-          icon={<Mic2 size={28} />}
-          title="Ready to Discover?"
-          description="Search for your favourite artist to see their upcoming world tour dates and local concerts."
-        />
-      )}
-
-      {artist && !isLoading && (
-        <>
-          <ArtistCard artist={artist} />
-          <EventsList events={events} isLoading={eventsLoading} />
-        </>
-      )}
+      <ArtistCard artist={artist} />
+      <EventsList events={events} isLoading={isEventsLoading} />
     </>
   );
 };
