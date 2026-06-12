@@ -1,6 +1,6 @@
 import { Button, Card } from '@heroui/react';
 import { Star } from 'lucide-react';
-import type { FavouriteItem } from 'shared/favourites';
+import type { FavouriteItem } from 'shared/store/favourites';
 
 type Props = {
   item: FavouriteItem;

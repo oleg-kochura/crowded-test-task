@@ -1,9 +1,9 @@
 import { Chip } from '@heroui/react';
 import { EventCard } from '../EventCard';
 import { EventsListSkeleton } from '../EventsListSkeleton';
-import type { ArtistEvent } from 'shared/favourites';
-import { NotFoundEmptyState } from 'features/layout/NotFoundEmptyState';
-import { useArtistSearchStore } from 'features/search/store/useArtistSearchStore';
+import type { ArtistEvent } from 'shared/api/artists';
+import { NotFoundEmptyState } from 'shared/ui/NotFoundEmptyState';
+import { useArtistSearchStore } from 'shared/store/artistSearch';
 
 type Props = {
   events: ArtistEvent[] | undefined;

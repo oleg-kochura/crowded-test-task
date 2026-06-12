@@ -1,6 +1,6 @@
 import { Card } from '@heroui/react';
 import { MapPin } from 'lucide-react';
-import type { ArtistEvent } from 'shared/favourites';
+import type { ArtistEvent } from 'shared/api/artists';
 
 type Props = {
   event: ArtistEvent;

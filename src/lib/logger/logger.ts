@@ -9,7 +9,7 @@ export type LogPayload = {
 
 const createLogger = () => ({
   log: ({ level, message, context }: LogPayload) => {
-    // replace by Sentry or similar
+    // You can replace it with Sentry or similar library
     console.log(`[${level}] ${message}`, context ?? '');
   },
 });

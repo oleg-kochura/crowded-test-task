@@ -3,9 +3,9 @@ import { Mic2 } from 'lucide-react';
 import { ArtistCard } from 'features/artist/ArtistCard/ArtistCard';
 import { ArtistCardSkeleton } from 'features/artist/ArtistCardSkeleton';
 import { EventsList } from 'features/events/EventsList';
-import { EmptyStateHint } from 'features/layout/EmptyStateHint';
-import { NotFoundEmptyState } from 'features/layout/NotFoundEmptyState';
-import { useArtistSearchStore } from 'features/search/store/useArtistSearchStore';
+import { EmptyStateHint } from 'shared/ui/EmptyStateHint';
+import { NotFoundEmptyState } from 'shared/ui/NotFoundEmptyState';
+import { useArtistSearchStore } from 'shared/store/artistSearch';
 
 import { useFetchArtistQuery, useFetchArtistEventsQuery } from 'shared/api/artists/queries';
 

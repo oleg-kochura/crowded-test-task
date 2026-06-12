@@ -1,5 +1,5 @@
 import { create } from 'zustand';
-import type { ArtistEvent } from 'shared/favourites';
+import type { ArtistEvent } from 'shared/api/artists';
 
 type ArtistSearchState = {
   artistName: string;

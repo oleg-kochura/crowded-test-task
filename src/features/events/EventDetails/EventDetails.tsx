@@ -1,8 +1,8 @@
 import { Button, Card, Chip } from '@heroui/react';
 import { Star } from 'lucide-react';
-import { useFavouritesStore, useIsFavourite } from 'shared/favourites';
-import type { ArtistEvent } from 'shared/favourites';
-import { useArtistSearchStore } from 'features/search/store/useArtistSearchStore';
+import { useFavouritesStore, useIsFavourite } from 'shared/store/favourites';
+import type { ArtistEvent } from 'shared/api/artists';
+import { useArtistSearchStore } from 'shared/store/artistSearch';
 
 type Props = {
   event: ArtistEvent;

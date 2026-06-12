@@ -1,7 +1,7 @@
 import { Star } from 'lucide-react';
-import { useFavouritesStore } from 'shared/favourites';
+import { useFavouritesStore } from 'shared/store/favourites';
 import { FavouriteCard } from '../FavouriteCard';
-import { EmptyStateHint } from 'features/layout/EmptyStateHint';
+import { EmptyStateHint } from 'shared/ui/EmptyStateHint';
 
 export const FavouritesList = () => {
   const items = useFavouritesStore((s) => s.items);

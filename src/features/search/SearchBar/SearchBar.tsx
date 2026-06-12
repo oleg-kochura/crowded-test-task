@@ -1,6 +1,7 @@
 import { SearchField } from '@heroui/react';
+
 import { debounce } from 'lib/utils';
-import { useArtistSearchStore } from './store/useArtistSearchStore';
+import { useArtistSearchStore } from 'shared/store/artistSearch';
 
 export const SearchBar = () => {
   const search = useArtistSearchStore((s) => s.search);

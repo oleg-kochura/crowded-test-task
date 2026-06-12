@@ -2,7 +2,7 @@ import type { PropsWithChildren } from 'react';
 import { ErrorBoundary, type FallbackProps } from 'react-error-boundary';
 
 import { handleError } from 'lib/errors';
-import { ErrorState } from 'features/layout/ErrorState';
+import { ErrorState } from 'shared/ui/ErrorState';
 
 type Props = PropsWithChildren<{
   title?: string;

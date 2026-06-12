@@ -1,7 +1,7 @@
 import { Button } from '@heroui/react';
 import { AlertTriangle } from 'lucide-react';
 
-import { EmptyStateHint } from 'features/layout/EmptyStateHint';
+import { EmptyStateHint } from 'shared/ui/EmptyStateHint';
 
 type Props = {
   title?: string;

@@ -17,8 +17,10 @@ export default defineConfig({
   resolve: {
     alias: {
       src: resolve(__dirname, 'src'),
+      app: resolve(__dirname, 'src/app'),
       lib: resolve(__dirname, 'src/lib'),
       shared: resolve(__dirname, 'src/shared'),
+      layout: resolve(__dirname, 'src/layout'),
       features: resolve(__dirname, 'src/features'),
     },
   },
