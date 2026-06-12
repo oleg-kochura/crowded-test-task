@@ -2,14 +2,7 @@ import { Card } from '@heroui/react';
 import { MapPin } from 'lucide-react';
 
 import type { ArtistEvent } from 'shared/api/artists';
-
-const formatDate = (iso: string) =>
-  new Date(iso).toLocaleDateString('en-US', {
-    weekday: 'short',
-    year: 'numeric',
-    month: 'short',
-    day: 'numeric',
-  });
+import { formatDate } from 'lib/utils';
 
 type Props = {
   event: ArtistEvent;

@@ -1,12 +1,28 @@
 import { Avatar, Card } from '@heroui/react';
 import { ExternalLink } from 'lucide-react';
-import type { Artist } from 'shared/api/artists';
 
-type Props = {
-  artist: Artist;
-};
+import { NotFoundEmptyState } from 'shared/ui/NotFoundEmptyState';
+import { useArtistEventsStore } from 'shared/store/artistEvents';
+import { useFetchArtistQuery } from 'shared/api/artists';
+import { ArtistCardSkeleton } from 'features/artist/ArtistCardSkeleton';
 
-export const ArtistCard = ({ artist }: Props) => {
+export const ArtistCard = () => {
+  const artistName = useArtistEventsStore((s) => s.artistName);
+  const { artist, isArtistLoading, error } = useFetchArtistQuery(artistName);
+
+  if (isArtistLoading) {
+    return <ArtistCardSkeleton />;
+  }
+
+  if (error || !artist) {
+    return (
+      <NotFoundEmptyState
+        title="Artist not found"
+        description="We couldn't find an artist with that name. Try checking the spelling."
+      />
+    );
+  }
+
   return (
     <div className="grid grid-cols-[13rem_1fr] gap-4">
       <Card>

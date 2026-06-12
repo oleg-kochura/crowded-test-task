@@ -1,18 +1,14 @@
 import { Button, Card } from '@heroui/react';
 import { Star } from 'lucide-react';
+
+import { formatDate } from 'lib/utils';
+
 import type { FavouriteItem } from 'shared/store/favourites';
 
 type Props = {
   item: FavouriteItem;
   onRemove: () => void;
 };
-
-const formatDate = (iso: string) =>
-  new Date(iso).toLocaleDateString('en-US', {
-    month: 'short',
-    day: 'numeric',
-    year: 'numeric',
-  });
 
 export const FavouriteCard = ({ item, onRemove }: Props) => {
   const { event, artistName } = item;

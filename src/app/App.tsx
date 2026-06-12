@@ -4,9 +4,9 @@ import { FeatureErrorBoundary } from 'layout/FeatureErrorBoundary';
 import { Column } from 'shared/ui/Column';
 import { SWRProvider } from 'app/providers/SWRProvider';
 import { SearchBar } from 'features/search/SearchBar';
-import { ArtistPanel } from 'features/artist/ArtistPanel';
-import { EventDetailsPanel } from 'features/events/EventDetailsPanel';
-import { FavouritesPanel } from 'features/favourites/FavouritesPanel';
+import { ArtistPanel } from 'widgets/ArtistPanel';
+import { EventDetailsPanel } from 'widgets/EventDetailsPanel';
+import { FavouritesPanel } from 'widgets/FavouritesPanel';
 
 import 'app/styles/index.css';
 

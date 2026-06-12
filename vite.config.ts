@@ -22,6 +22,7 @@ export default defineConfig({
       shared: resolve(__dirname, 'src/shared'),
       layout: resolve(__dirname, 'src/layout'),
       features: resolve(__dirname, 'src/features'),
+      widgets: resolve(__dirname, 'src/widgets'),
     },
   },
 });

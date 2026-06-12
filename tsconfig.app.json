@@ -26,7 +26,8 @@
       "lib/*": ["./src/lib/*"],
       "shared/*": ["./src/shared/*"],
       "layout/*": ["./src/layout/*"],
-      "features/*": ["./src/features/*"]
+      "features/*": ["./src/features/*"],
+      "widgets/*": ["./src/widgets/*"]
     }
   },
   "include": ["src"]

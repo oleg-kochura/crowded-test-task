@@ -1,10 +1,10 @@
 import { SearchField } from '@heroui/react';
 
 import { debounce } from 'lib/utils';
-import { useArtistSearchStore } from 'shared/store/artistSearch';
+import { useArtistEventsStore } from 'shared/store/artistEvents';
 
 export const SearchBar = () => {
-  const search = useArtistSearchStore((s) => s.search);
+  const search = useArtistEventsStore((s) => s.search);
 
   const handleSearchDebounced = debounce((val: string) => search(val.trim()), 500);
 

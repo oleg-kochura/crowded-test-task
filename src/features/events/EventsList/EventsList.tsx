@@ -1,24 +1,21 @@
-import { Chip } from '@heroui/react';
-import { EventCard } from '../EventCard';
-import { EventsListSkeleton } from '../EventsListSkeleton';
-import type { ArtistEvent } from 'shared/api/artists';
 import { NotFoundEmptyState } from 'shared/ui/NotFoundEmptyState';
-import { useArtistSearchStore } from 'shared/store/artistSearch';
+import { useArtistEventsStore } from 'shared/store/artistEvents';
+import { useFetchArtistEventsQuery } from 'shared/api/artists';
 
-type Props = {
-  events: ArtistEvent[] | undefined;
-  isLoading: boolean;
-};
+import { EventCard } from './components/EventCard';
+import { EventsListSkeleton } from './components/EventsListSkeleton';
 
-export const EventsList = ({ events, isLoading }: Props) => {
-  const selectedEventId = useArtistSearchStore((s) => s.selectedEvent?.id ?? null);
-  const selectEvent = useArtistSearchStore((s) => s.selectEvent);
+export const EventsList = () => {
+  const artistName = useArtistEventsStore((s) => s.artistName);
+  const selectedEventId = useArtistEventsStore((s) => s.selectedEvent?.id ?? null);
+  const selectEvent = useArtistEventsStore((s) => s.selectEvent);
+  const { events, isEventsLoading } = useFetchArtistEventsQuery(artistName);
 
-  if (isLoading) {
+  if (isEventsLoading) {
     return <EventsListSkeleton />;
   }
 
-  if (!events || events.length === 0) {
+  if (!events?.length) {
     return (
       <NotFoundEmptyState
         title="No events found"
@@ -29,14 +26,8 @@ export const EventsList = ({ events, isLoading }: Props) => {
 
   return (
     <div className="flex flex-col gap-2">
-      <div className="flex items-center justify-between">
-        <p className="text-xs font-semibold uppercase tracking-wider text-muted">
-          Upcoming Events
-        </p>
-        <Chip size="sm" variant="soft">
-          {events.length} {events.length === 1 ? 'result' : 'results'}
-        </Chip>
-      </div>
+      <p className="text-xs font-semibold uppercase tracking-wider text-muted">Upcoming Events</p>
+
       {events.map((event) => (
         <EventCard
           key={event.id}
