@@ -5,7 +5,6 @@ import { resolve } from 'node:path';
 
 export default defineConfig({
   plugins: [react(), tailwindcss()],
-  envPrefix: ['VITE_', 'API_KEY'],
   server: {
     proxy: {
       '/api': {
