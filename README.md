@@ -14,8 +14,25 @@ A React SPA built with Vite and TypeScript.
 
 ```bash
 npm install
+cp .env.example .env
+# Set VITE_API_KEY in .env (provided by Crowded)
 npm run dev
 ```
+
+## Environment variables
+
+Copy `.env.example` to `.env` and fill in your values:
+
+```bash
+cp .env.example .env
+```
+
+| Variable | Required | Description |
+| -------- | -------- | ----------- |
+| `VITE_API_KEY` | Yes | API key from Crowded, sent as the `apiKey` query param on every request |
+| `VITE_API_BASE_URL` | No | API base URL (defaults to `https://crowded-frontend-assignment.netlify.app/api`) |
+
+Variables prefixed with `VITE_` are exposed to the client bundle at build time.
 
 ## Scripts
 
